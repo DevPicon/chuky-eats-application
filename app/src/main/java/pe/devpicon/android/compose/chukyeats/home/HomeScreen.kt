@@ -1,11 +1,10 @@
-package pe.devpicon.android.compose.chukyeats.ui
+package pe.devpicon.android.compose.chukyeats.home
 
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -20,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.ui.tooling.preview.Preview
 import pe.devpicon.android.compose.chukyeats.R
+import pe.devpicon.android.compose.chukyeats.ui.MyChukyEatsApplicationTheme
 
 @Composable
 fun HomeScreen() {

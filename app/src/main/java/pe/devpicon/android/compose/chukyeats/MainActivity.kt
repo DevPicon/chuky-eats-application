@@ -66,7 +66,12 @@ fun UberTopBar() {
             )
             append(AnnotatedString(text = stringResource(id = R.string.title_chuky), defaultStyle))
             append(AnnotatedString(text = " ", defaultStyle))
-            append(AnnotatedString(text = stringResource(id = R.string.title_eats), defaultStyle.copy(color = Color.Green)))
+            append(
+                AnnotatedString(
+                    text = stringResource(id = R.string.title_eats),
+                    defaultStyle.copy(color = Color.Green)
+                )
+            )
         }.toAnnotatedString()
         Text(text = content)
 
