@@ -3,4 +3,5 @@
     <string name="title_chuky">Chuky</string>
     <string name="title_eats">Eats</string>
     <string name="label_slogan">Your favorite food, delivered with &#160;</string>
+    <string name="label_delivery_fee">$%.2f Delivery Fee</string>
 </resources>

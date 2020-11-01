@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
@@ -16,12 +15,11 @@ import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.ui.tooling.preview.Preview
+import pe.devpicon.android.compose.chukyeats.home.HomeScreen
 import pe.devpicon.android.compose.chukyeats.ui.MyChukyEatsApplicationTheme
 
 class MainActivity : AppCompatActivity() {
@@ -41,16 +39,16 @@ fun MainApp() {
         modifier = Modifier.fillMaxSize()
     ) {
         Scaffold(
-            topBar = { UberTopBar() },
+            topBar = { ChukyTopBar() },
             bottomBar = { NavigationBottomBar() }
         ) {
-
+            HomeScreen()
         }
     }
 }
 
 @Composable
-fun UberTopBar() {
+fun ChukyTopBar() {
     Row(
         modifier = Modifier
             .height(60.dp)
@@ -82,7 +80,7 @@ fun UberTopBar() {
 fun NavigationBottomBar() {
     Box(
         modifier = Modifier
-            .background(Color.Green)
+            .background(Color.LightGray)
             .height(60.dp)
             .fillMaxWidth()
     )
