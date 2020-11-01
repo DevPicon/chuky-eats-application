@@ -14,6 +14,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.TextUnit
@@ -56,22 +58,17 @@ fun UberTopBar() {
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(
-            text = stringResource(id = R.string.title_chuky),
-            style = TextStyle(
+        val content = AnnotatedString.Builder().apply {
+            val defaultStyle = SpanStyle(
                 color = Color.Black,
-                fontSize = 28.sp
-            )
-        )
-        Spacer(modifier = Modifier.width(4.dp))
-        Text(
-            text = stringResource(id = R.string.title_eats),
-            style = TextStyle(
-                color = Color.Green,
-                fontSize = 28.sp,
+                fontSize = 24.sp,
                 fontWeight = FontWeight.Bold
             )
-        )
+            append(AnnotatedString(text = stringResource(id = R.string.title_chuky), defaultStyle))
+            append(AnnotatedString(text = " ", defaultStyle))
+            append(AnnotatedString(text = stringResource(id = R.string.title_eats), defaultStyle.copy(color = Color.Green)))
+        }.toAnnotatedString()
+        Text(text = content)
 
     }
 }
