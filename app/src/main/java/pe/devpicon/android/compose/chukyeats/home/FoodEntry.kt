@@ -1,4 +1,4 @@
-package pe.devpicon.android.compose.chukyeats.ui
+package pe.devpicon.android.compose.chukyeats.home
 
 import androidx.compose.runtime.Composable
 import androidx.ui.tooling.preview.Preview
