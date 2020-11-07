@@ -23,6 +23,7 @@ import pe.devpicon.android.compose.chukyeats.FoodItem
 import pe.devpicon.android.compose.chukyeats.PriceType
 import pe.devpicon.android.compose.chukyeats.R
 import pe.devpicon.android.compose.chukyeats.ui.MyChukyEatsApplicationTheme
+import pe.devpicon.android.compose.chukyeats.ui.greenChuky
 
 @Composable
 fun HomeScreen() {
@@ -55,7 +56,7 @@ fun HomeScreen() {
 
     Surface(Modifier.fillMaxSize()) {
         Column(
-                modifier = Modifier.padding(24.dp),
+                modifier = Modifier.padding(32.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
         ) {
             ChukySlogan()
@@ -63,6 +64,11 @@ fun HomeScreen() {
             CustomerAddress(
                     address = "2700 West Victory",
                     Modifier.fillMaxWidth()
+            )
+            Spacer(
+                    modifier = Modifier
+                            .height(8.dp)
+                            .fillMaxWidth()
             )
             LazyColumnFor(items = foodList) {
                 FoodEntry(model = it)
@@ -88,7 +94,7 @@ fun ChukySlogan() {
         append(
                 AnnotatedString(
                         text = stringResource(id = R.string.title_chuky),
-                        spanStyle = commonStyle.copy(Color.Green)
+                        spanStyle = commonStyle.copy(greenChuky)
                 )
         )
     }.toAnnotatedString()
@@ -106,7 +112,12 @@ fun CustomerAddress(
             textAlign = TextAlign.Center,
             modifier = modifier
                     .background(Color.Black, shape = RoundedCornerShape(CornerSize(4.dp)))
-                    .padding(8.dp)
+                    .padding(
+                            top = 8.dp,
+                            start = 16.dp,
+                            end = 16.dp,
+                            bottom = 8.dp
+                    )
     )
 }
 
