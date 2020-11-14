@@ -5,6 +5,7 @@ import androidx.compose.foundation.Text
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.RadioButton
@@ -12,6 +13,8 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawShadow
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -37,7 +40,18 @@ fun FoodScreen(
                 modifier = modifier
                         .padding(32.dp)
         ) {
-            Image(asset = imageResource(id = foodDetail.photoId))
+            Image(
+                    asset = imageResource(id = foodDetail.photoId),
+                    contentScale = ContentScale.Crop,
+                    modifier = modifier
+                            .size(244.dp)
+                            .padding(8.dp)
+                            .drawShadow(
+                                    elevation = 8.dp,
+                                    shape = CircleShape
+                            )
+                            .align(Alignment.CenterHorizontally)
+            )
             Text(
                     text = foodDetail.name,
                     modifier = modifier
@@ -177,61 +191,57 @@ private fun CustomOptionRow(
         selected: Boolean = false,
         modifier: Modifier = Modifier
 ) {
-    Row(
+
+    ConstraintLayout(
             modifier = modifier
-                    .fillMaxWidth()
                     .padding(16.dp)
+                    .fillMaxWidth()
     ) {
-        ConstraintLayout(
+
+        val (radioButton, textSize, textAdditionalCost) = createRefs()
+
+        RadioButton(
+                selected = selected,
+                onClick = {},
                 modifier = modifier
-                        .fillMaxWidth()
-        ) {
-
-            val (radioButton, textSize, textAdditionalCost) = createRefs()
-
-            RadioButton(
-                    selected = selected,
-                    onClick = {},
-                    modifier = modifier
-                            .padding(8.dp)
-                            .size(10.dp)
-                            .constrainAs(radioButton) {
-                                start.linkTo(
-                                        anchor = parent.start,
-                                        margin = 4.dp
-                                )
-                                end.linkTo(
-                                        anchor = textSize.start,
-                                        margin = 8.dp
-                                )
-                                top.linkTo(parent.top)
-                                bottom.linkTo(parent.bottom)
-                            }
-            )
-            Text(
-                    text = optionSize,
-                    fontSize = 10.sp,
-                    modifier = modifier
-                            .constrainAs(textSize) {
-                                start.linkTo(
-                                        anchor = radioButton.end,
-                                        margin = 8.dp
-                                )
-                                top.linkTo(radioButton.top)
-                                bottom.linkTo(radioButton.bottom)
-                            }
-            )
-            Text(
-                    text = optionAdditionalCost,
-                    fontSize = 10.sp,
-                    modifier = modifier
-                            .constrainAs(textAdditionalCost) {
-                                end.linkTo(parent.end)
-                                top.linkTo(parent.top)
-                                bottom.linkTo(parent.bottom)
-                            }
-            )
-        }
+                        .padding(8.dp)
+                        .size(10.dp)
+                        .constrainAs(radioButton) {
+                            start.linkTo(
+                                    anchor = parent.start,
+                                    margin = 4.dp
+                            )
+                            end.linkTo(
+                                    anchor = textSize.start,
+                                    margin = 8.dp
+                            )
+                            top.linkTo(parent.top)
+                            bottom.linkTo(parent.bottom)
+                        }
+        )
+        Text(
+                text = optionSize,
+                fontSize = 10.sp,
+                modifier = modifier
+                        .constrainAs(textSize) {
+                            start.linkTo(
+                                    anchor = radioButton.end,
+                                    margin = 8.dp
+                            )
+                            top.linkTo(radioButton.top)
+                            bottom.linkTo(radioButton.bottom)
+                        }
+        )
+        Text(
+                text = optionAdditionalCost,
+                fontSize = 10.sp,
+                modifier = modifier
+                        .constrainAs(textAdditionalCost) {
+                            end.linkTo(parent.end)
+                            top.linkTo(parent.top)
+                            bottom.linkTo(parent.bottom)
+                        }
+        )
     }
 }
 
