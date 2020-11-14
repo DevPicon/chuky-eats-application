@@ -193,6 +193,7 @@ private fun CustomOptionRow(
                     selected = selected,
                     onClick = {},
                     modifier = modifier
+                            .padding(8.dp)
                             .size(10.dp)
                             .constrainAs(radioButton) {
                                 start.linkTo(
@@ -201,7 +202,7 @@ private fun CustomOptionRow(
                                 )
                                 end.linkTo(
                                         anchor = textSize.start,
-                                        margin = 4.dp
+                                        margin = 8.dp
                                 )
                                 top.linkTo(parent.top)
                                 bottom.linkTo(parent.bottom)
@@ -214,7 +215,7 @@ private fun CustomOptionRow(
                             .constrainAs(textSize) {
                                 start.linkTo(
                                         anchor = radioButton.end,
-                                        margin = 4.dp
+                                        margin = 8.dp
                                 )
                                 top.linkTo(radioButton.top)
                                 bottom.linkTo(radioButton.bottom)
