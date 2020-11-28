@@ -87,7 +87,9 @@ fun FoodScreen(
             )
             Button(
                 onClick = {},
-                backgroundColor = greenChuky,
+                colors = ButtonConstants.defaultButtonColors(
+                    backgroundColor = greenChuky
+                ),
                 shape = MaterialTheme.shapes.medium,
                 modifier = modifier
                     .fillMaxWidth()
