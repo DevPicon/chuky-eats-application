@@ -5,4 +5,9 @@
     <string name="label_slogan">Your favorite food, delivered with &#160;</string>
     <string name="label_delivery_fee">$%.2f Delivery Fee</string>
     <string name="label_add_item_product">Add 1 to cart fo US $6.80</string>
+    <string name="label_home">Home</string>
+    <string name="label_search">Search</string>
+    <string name="label_place">Place</string>
+    <string name="label_shopping_cart">Shopping Cart</string>
+    <string name="label_profile">Profile</string>
 </resources>

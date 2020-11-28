@@ -1,15 +1,10 @@
 package pe.devpicon.android.compose.chukyeats.home
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.Text
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.RadioButton
-import androidx.compose.material.Surface
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -53,56 +48,56 @@ fun FoodScreen(
                             .align(Alignment.CenterHorizontally)
             )
             Text(
-                    text = foodDetail.name,
-                    modifier = modifier
-                            .padding(8.dp)
-                            .align(Alignment.CenterHorizontally),
-                    textAlign = TextAlign.Center,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 16.sp
+                text = foodDetail.name,
+                modifier = modifier
+                    .padding(8.dp)
+                    .align(Alignment.CenterHorizontally),
+                textAlign = TextAlign.Center,
+                fontWeight = FontWeight.Bold,
+                fontSize = 16.sp
             )
             Text(
-                    text = foodDetail.description,
-                    modifier = modifier
-                            .padding(
-                                    top = 8.dp,
-                                    bottom = 8.dp,
-                                    start = 24.dp,
-                                    end = 24.dp
-                            ),
-                    textAlign = TextAlign.Justify,
-                    fontSize = 12.sp
+                text = foodDetail.description,
+                modifier = modifier
+                    .padding(
+                        top = 8.dp,
+                        bottom = 8.dp,
+                        start = 24.dp,
+                        end = 24.dp
+                    ),
+                textAlign = TextAlign.Justify,
+                fontSize = 12.sp
             )
             Spacer(
-                    modifier = modifier
-                            .fillMaxWidth()
-                            .height(16.dp)
+                modifier = modifier
+                    .fillMaxWidth()
+                    .height(16.dp)
             )
             ItemCustomization(modifier)
             Spacer(
-                    modifier = modifier
-                            .fillMaxWidth()
-                            .height(16.dp)
+                modifier = modifier
+                    .fillMaxWidth()
+                    .height(16.dp)
             )
             ItemQuantity(modifier)
             Spacer(
-                    modifier = modifier
-                            .fillMaxWidth()
-                            .height(16.dp)
+                modifier = modifier
+                    .fillMaxWidth()
+                    .height(16.dp)
             )
             Button(
-                    onClick = {},
-                    backgroundColor = greenChuky,
-                    shape = MaterialTheme.shapes.medium,
-                    modifier = modifier
-                            .fillMaxWidth()
-                            .align(Alignment.CenterHorizontally)
+                onClick = {},
+                backgroundColor = greenChuky,
+                shape = MaterialTheme.shapes.medium,
+                modifier = modifier
+                    .fillMaxWidth()
+                    .align(Alignment.CenterHorizontally)
             ) {
                 Text(
-                        text = stringResource(id = R.string.label_add_item_product),
-                        fontSize = 12.sp,
-                        color = MaterialTheme.colors.onPrimary,
-                        fontWeight = FontWeight.Light
+                    text = stringResource(id = R.string.label_add_item_product),
+                    fontSize = 12.sp,
+                    color = MaterialTheme.colors.onPrimary,
+                    fontWeight = FontWeight.Light
                 )
             }
         }
@@ -111,45 +106,50 @@ fun FoodScreen(
 
 @Composable
 fun ItemQuantity(modifier: Modifier = Modifier) {
-    Box(modifier = modifier
+    Box(
+        modifier = modifier
             .fillMaxWidth()
-            .height(24.dp)
+            .border(
+                border = BorderStroke(1.dp, MaterialTheme.colors.onSurface),
+                shape = MaterialTheme.shapes.small
+            )
+            .height(ButtonConstants.DefaultMinHeight)
             .background(MaterialTheme.colors.onSurface)
     ) {
         Row(
-                modifier = modifier.align(Alignment.Center)
-                        .fillMaxWidth()
-                        .padding(4.dp),
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically
+            modifier = modifier.align(Alignment.Center)
+                .fillMaxWidth()
+                .padding(4.dp),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                    text = "-",
-                    fontSize = 12.sp,
-                    color = MaterialTheme.colors.onPrimary,
-                    modifier = modifier
+                text = "-",
+                fontSize = 12.sp,
+                color = MaterialTheme.colors.onPrimary,
+                modifier = modifier
             )
             Spacer(
-                    modifier = modifier
-                            .fillMaxHeight()
-                            .width(8.dp)
+                modifier = modifier
+                    .fillMaxHeight()
+                    .width(8.dp)
             )
             Text(
-                    text = "1",
-                    fontSize = 12.sp,
-                    color = MaterialTheme.colors.onPrimary,
-                    modifier = modifier
+                text = "1",
+                fontSize = 12.sp,
+                color = MaterialTheme.colors.onPrimary,
+                modifier = modifier
             )
             Spacer(
-                    modifier = modifier
-                            .fillMaxHeight()
-                            .width(8.dp)
+                modifier = modifier
+                    .fillMaxHeight()
+                    .width(8.dp)
             )
             Text(
-                    text = "+",
-                    fontSize = 12.sp,
-                    color = MaterialTheme.colors.onPrimary,
-                    modifier = modifier
+                text = "+",
+                fontSize = 12.sp,
+                color = MaterialTheme.colors.onPrimary,
+                modifier = modifier
             )
         }
     }
@@ -157,29 +157,33 @@ fun ItemQuantity(modifier: Modifier = Modifier) {
 
 @Composable
 fun ItemCustomization(modifier: Modifier = Modifier) {
-    Column(modifier = modifier
+    Column(
+        modifier = modifier
             .fillMaxWidth()
             .border(
-                    width = 1.dp,
-                    color = MaterialTheme.colors.onSurface,
-                    shape = MaterialTheme.shapes.small
-
+                width = 1.dp,
+                color = MaterialTheme.colors.onSurface,
+                shape = MaterialTheme.shapes.small
+            )
+            .padding(
+                horizontal = 8.dp,
+                vertical = 4.dp
             )
     ) {
         CustomOptionRow(
-                optionSize = "Small",
-                selected = true,
-                modifier = modifier
+            optionSize = "Small",
+            selected = true,
+            modifier = modifier
         )
         CustomOptionRow(
-                optionSize = "Medium",
-                optionAdditionalCost = "+ US $3.95",
-                modifier = modifier
+            optionSize = "Medium",
+            optionAdditionalCost = "+ US $3.95",
+            modifier = modifier
         )
         CustomOptionRow(
-                optionSize = "Large",
-                optionAdditionalCost = "+ US $7.20",
-                modifier = modifier
+            optionSize = "Large",
+            optionAdditionalCost = "+ US $7.20",
+            modifier = modifier
         )
     }
 }
@@ -193,9 +197,9 @@ private fun CustomOptionRow(
 ) {
 
     ConstraintLayout(
-            modifier = modifier
-                    .padding(16.dp)
-                    .fillMaxWidth()
+        modifier = modifier
+            .padding(8.dp)
+            .fillMaxWidth()
     ) {
 
         val (radioButton, textSize, textAdditionalCost) = createRefs()
@@ -254,7 +258,7 @@ fun PreviewFoodScreen() {
 }
 
 val foodDetail = FoodDetail(
-        name = "Wok-Fired Shrimp",
-        description = "Wok-Fired Shrimp features seared premium marinated shrimp with fresh cut vegetables (sugar snap peas, chopped red bell peppers and yellow onions), all wok-tossed in a sauce that's sweet, savory and spicy.",
-        photoId = R.drawable.food04
+    name = "Wok-Fired Shrimp",
+    description = "Wok-Fired Shrimp features seared premium marinated shrimp with fresh cut vegetables (sugar snap peas, chopped red bell peppers and yellow onions), all wok-tossed in a sauce that's sweet, savory and spicy.",
+    photoId = R.drawable.food04
 )
