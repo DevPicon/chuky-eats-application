@@ -6,6 +6,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.onActive
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawShadow
@@ -16,11 +19,54 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.ui.tooling.preview.Preview
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.launch
 import pe.devpicon.android.compose.chukyeats.FoodDetail
 import pe.devpicon.android.compose.chukyeats.R
 import pe.devpicon.android.compose.chukyeats.ui.MyChukyEatsApplicationTheme
 import pe.devpicon.android.compose.chukyeats.ui.greenChuky
+
+class FoodDetailViewModel: ViewModel() {
+
+    private val _detail = MutableLiveData<FoodDetail>()
+    val detail: LiveData<FoodDetail> = _detail
+
+    fun load(id: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            delay(5000)
+            _detail.postValue(FoodDetail(
+                name = if(id == "1") "Wok-Fired Shrimp" else "Pavo navideno",
+                description = "Wok-Fired Shrimp features seared premium marinated shrimp with fresh cut vegetables (sugar snap peas, chopped red bell peppers and yellow onions), all wok-tossed in a sauce that's sweet, savory and spicy.",
+                photoId = R.drawable.food04
+            ))
+        }
+        //...
+    }
+}
+
+@Composable
+fun FoodScreenNavigatable(
+    id: String,
+    viewModel: FoodDetailViewModel
+) {
+    viewModel.load(id)
+
+    val detail = viewModel.detail.observeAsState().value
+
+    if(detail == null) {
+        CircularProgressIndicator()
+    } else {
+        FoodScreen(foodDetail = detail)
+    }
+}
+
 
 @Composable
 fun FoodScreen(
