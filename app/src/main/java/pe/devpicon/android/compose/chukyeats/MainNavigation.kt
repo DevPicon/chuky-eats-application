@@ -14,7 +14,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
 import androidx.ui.tooling.preview.Preview
-import pe.devpicon.android.compose.chukyeats.home.*
+import pe.devpicon.android.compose.chukyeats.feature.*
+import pe.devpicon.android.compose.chukyeats.feature.fooddetail.FoodDetailViewModel
+import pe.devpicon.android.compose.chukyeats.feature.fooddetail.FoodScreenNavigatable
+import pe.devpicon.android.compose.chukyeats.feature.profile.ProfileScreen
 import pe.devpicon.android.compose.chukyeats.ui.MyChukyEatsApplicationTheme
 
 @Composable
@@ -30,7 +33,7 @@ fun MainNavigation() {
             composable("profile") { ProfileScreen() }
             composable("food/{id}") {
                 val id = it.arguments?.getString("id")!!
-                FoodScreenNavigatable(id, viewModel = FoodDetailViewModel())
+                FoodScreenNavigatable(id)
             }
         }
     }

@@ -24,7 +24,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.ui.tooling.preview.Preview
-import pe.devpicon.android.compose.chukyeats.home.HomeScreen
+import pe.devpicon.android.compose.chukyeats.feature.HomeScreen
 import pe.devpicon.android.compose.chukyeats.ui.MyChukyEatsApplicationTheme
 import pe.devpicon.android.compose.chukyeats.ui.greenChuky
 
