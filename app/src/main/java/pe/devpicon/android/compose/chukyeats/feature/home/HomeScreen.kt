@@ -1,4 +1,4 @@
-package pe.devpicon.android.compose.chukyeats.home
+package pe.devpicon.android.compose.chukyeats.feature
 
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.background
